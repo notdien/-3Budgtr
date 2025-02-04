@@ -1,6 +1,14 @@
 import {serve} from 'bun'
+
 // import express backend
-import express from "express"
+const express = require('express');
+const app = express();
+
+// import routes
+const getPaycheck = require('/routes/paycheck.js')
+
+app.use(express.json());
+
 
 console.log("Hello via Bun!"); const server = Bun.serve({
   port: 3000,
@@ -11,17 +19,3 @@ console.log("Hello via Bun!"); const server = Bun.serve({
 
 console.log(`Listening on http://localhost:${server.port} ...`);
 
-// serve({
-//   fetch(request) {
-//     const url = new URL(request.url);
-//     if (url.pathname === '/') {
-//       return new Response(JSON.stringify({"Status": "OK"}), {
-//         headers: {'context-type': 'application/json'}
-//       });
-//     } else {
-//       return new Response('Not found', {status: 404});
-//     }
-//   },
-//   port: 3000,
-// })
-// console.log (`Server is running...`);
