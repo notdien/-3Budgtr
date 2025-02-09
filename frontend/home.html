@@ -14,28 +14,59 @@
 <body>
     <h1>&lt;3Budgtr</h1>
     <div class = "main-content">
-        <table>
-            <tr>
-                <th>Item</th>
-                <th>Date Purchased</th>
-                <th>Category</th>
-            </tr>
-            <tr>
-                <td>Item 1</td>
-                <td>Date 1</td>
-                <td>Category 1</td>
-            </tr>
-            <tr>
-                <td>Item 2</td>
-                <td>Date 2</td>
-                <td>Category 2</td>
-            </tr>
-            <tr>
-                <td>Item 2</td>
-                <td>Date 2</td>
-                <td>Category 2</td>
-            </tr>
-        </table>
+        <form>
+            <table>
+                <tr>
+                    <th style="width: 40%">Item</th>
+                    <th style="width: 20%">Amount</th>
+                    <th style="width: 20%">Date</th>
+                    <th style="width: 20%">Category</th>
+                </tr>
+                <tr>
+                    <td><input class="items-textbox" type="text" placeholder="Item 1"></td>
+                    <td><label>$</label><input type="number" name="amount"min="0.00" max="100000.00" step="0.01"></td>
+                    <td><input type="date"></td>
+                    <td>
+                        <select>
+                            <option value="placeholder" disabled selected hidden>Choose</option>
+                            <option value="needs">Needs</option>
+                            <option value="wants">Wants</option>
+                            <option value="savings">Savings</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input class="items-textbox" type="text" placeholder="Item 2"></td>
+                    <td><label>$</label><input type="number" name="amount"min="0.00" max="100000.00" step="0.01"></td>
+                    <td><input type="date"></td>
+                    <td>
+                        <select>
+                            <option value="placeholder" disabled selected hidden>Choose</option>
+                            <option value="needs">Needs</option>
+                            <option value="wants">Wants</option>
+                            <option value="savings">Savings</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input class="items-textbox" type="text" placeholder="Item 3"></td>
+                    <td><label>$</label><input type="number" name="amount"min="0.00" max="100000.00" step="0.01"></td>
+                    <td><input type="date"></td>
+                    <td>
+                        <select>
+                            <option value="placeholder" disabled selected hidden>Choose</option>
+                            <option value="needs">Needs</option>
+                            <option value="wants">Wants</option>
+                            <option value="savings">Savings</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        
     </div>
 </body>
 </html>

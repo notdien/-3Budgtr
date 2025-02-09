@@ -1,6 +1,8 @@
 table {
-    width: 100%;
-    border: 1px solid black;    
+    width: 60%;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;    
 }
 
 tr, td, th {
@@ -9,4 +11,10 @@ tr, td, th {
 
 .main-content {
     padding: 30px;
+}
+
+.items-textbox {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;    
 }
