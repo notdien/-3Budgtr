@@ -1,6 +1,5 @@
 // import dependencies
 import {serve} from 'bun'
-import bodyParser from "body-parser"
 
 const express = require('express');
 const app = express();
@@ -11,8 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // import routes
-const paycheckRoute = require(/routes/paycheck)
-app.use('/paycheck', paycheckRoute);
+const {setupHello} = require('./paycheck');
 
 
 console.log("Hello via Bun !!!"); const server = Bun.serve({
