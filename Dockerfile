@@ -5,6 +5,7 @@ FROM oven/bun:latest
 RUN bun init
 RUN bun install
 RUN bun add express
+RUN bun add body-parser
 
 # copy application files to image
 # COPY Source Dest

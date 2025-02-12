@@ -1,6 +1,8 @@
 const express = require('express');
-const app = express();
+const paycheckRouter = express.Router();
 
-app.post('/paycheck', (req, res) => {
+paycheckRouter.post('/paycheck', (req, res) => {
     res.send("Ping'd paycheck route")
 })
+
+module.exports = paycheckRouter;
