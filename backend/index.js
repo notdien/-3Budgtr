@@ -1,8 +1,10 @@
 // import dependencies
 import {serve} from 'bun'
 
+const port = 3000;
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 app.use(express.json());
 
 // body parser
@@ -13,12 +15,20 @@ app.use(bodyParser.urlencoded({ extended: true}));
 const {setupHello} = require('./paycheck');
 
 
-console.log("Hello via Bun !!!"); const server = Bun.serve({
-  port: 3000,
-  fetch(req) {
-    return new Response("Bun !!!");
-  },
+// console.log("Hello via Bun !!!"); const server = Bun.serve({
+//   fetch(req) {
+//     return new Response("Buns ");
+//   },
+// });
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
-console.log(`Listening on http://localhost:${server.port} ...`);
+// test route
+app.post('/howdy', (req, res) => {
+  res.send('Howdy from docker!!!');
+});
+
+// console.log(`Listening on http://localhost:${server.port} ...`);
 
