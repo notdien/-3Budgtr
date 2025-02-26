@@ -31,12 +31,8 @@ router.post('/paycheck_bills', (req, res) => {
    const rent_input = req.query.rent;
 
    // check for empty inputs
-   if (income_input === '' || income_input === null || income_input === undefined) {
-        return res.send('Income cannot be empty...');
-   }
-
-   if (rent_input === '' || rent_input === null || rent_input === undefined) {
-        return res.send('Rent input cannot be empty - Enter 0 if rent is not applicable')
+   if (!income_input || !rent_input) {
+     return res.status(400).send('Both inputs are required and cannot be empty...');
    }
 
    // convert to number and check for valid integer
@@ -50,16 +46,32 @@ router.post('/paycheck_bills', (req, res) => {
         return res.send('Provide a valid integer for rent....');
    }
 
-   // check for floating-point number
-   if (parseFloat(income_input) != income) {
-        return res.send('Please provide an integer, not a floating-point number...');
+   if (parseFloat(income_input) != income || parseFloat(rent_input) != rent) {
+     return res.status(400).send('Inputs cannot be floating point number... Please provide an integer!')
    }
 
-   if (parseFloat(rent_input) != rent) {
-        return res.send('Please provide an integer, not a floating-pointer number...');
+   // total bills
+   const total = rent + internet_bill + car_bill + icloud_bill + spotify_bill + gym_bill;
+
+   // total after bills
+   const total_after = income - total;
+
+   // needs / wants
+   const needs = total_after * 0.50;
+   const wants = total_after * 0.50;
+
+
+   const data = {
+     "Total_rent": `$${rent}...`,
+     "Total_income": `$${income}...`,
+     "Total_bills": `This is the total bill amount including rent: $${total}...`,
+     "Total_after_bills": `This is the amount you have left after bills: $${total_after}...`,
+     "Needs": `This is the amount you have to spend for needs this paycheck: $${needs}...`,
+     "Wants": `This is the amount you have to spend for wants this paycheck: $${wants}...`,
    }
 
-   res.send(`Rent due: $${rent} and income is $${income}`);
+   res.json(data);
+
 })
 
 // creating paycheck calculator - paycheck for savings
