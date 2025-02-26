@@ -1,27 +1,29 @@
-import {serve} from 'bun'
-// import express backend
-import express from "express"
+const port = 3000;
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+app.use(express.json());
 
-console.log("Hello via Bun!"); const server = Bun.serve({
-  port: 3000,
-  fetch(req) {
-    return new Response("Bun!");
-  },
+// body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+
+// import routes
+const paycheck = require('./routes/paycheck');
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
-console.log(`Listening on http://localhost:${server.port} ...`);
+// home page
+app.get('/', (req, res) => {
+  res.send('Lol home page');
+});
 
-// serve({
-//   fetch(request) {
-//     const url = new URL(request.url);
-//     if (url.pathname === '/') {
-//       return new Response(JSON.stringify({"Status": "OK"}), {
-//         headers: {'context-type': 'application/json'}
-//       });
-//     } else {
-//       return new Response('Not found', {status: 404});
-//     }
-//   },
-//   port: 3000,
-// })
-// console.log (`Server is running...`);
+// test route
+app.post('/howdy', (req, res) => {
+  res.send('Howdy from docker!!! Making sure this works?');
+});
+
+// use this /paycheck + parameter to allow use of http req
+app.use('/paycheck', paycheck);

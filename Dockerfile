@@ -5,10 +5,13 @@ FROM oven/bun:latest
 RUN bun init
 RUN bun install
 RUN bun add express
+RUN bun add body-parser
 
 # copy application files to image
 # COPY Source Dest
-COPY /backend/index.js .
+WORKDIR /home
+COPY /backend .
+
 
 # final configuration
 EXPOSE 3000
